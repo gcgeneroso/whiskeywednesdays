@@ -20,12 +20,17 @@
     <body>
         <div class="page-header">
             {% if user.is_authenticated %}
+                <button type="button" class="btn btn-default log-in-or-out" id="log-out" onclick="logOut()">
+                  Log Out
+                </button>
+                
                 <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                <span class="greetings">{{ user.get_username }}</span>
             {% endif %}
 
             {% if user.is_anonymous %}
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-default login-button" data-toggle="modal" data-target="#myModal">
+            <button type="button" class="btn btn-default log-in-or-out" data-toggle="modal" data-target="#myModal">
               Log In
             </button>
 
@@ -58,12 +63,22 @@
                 </div>
             </div>
         </div>
+        <div id="hidden-frame" style="display:none"></div>
         <script type="text/javascript">
             $(function(){
                 $('#myModal').on('hidden.bs.modal', function () {
                   document.location.reload();
                 });
             });
+        </script>
+        <script>
+        function logOut() {
+            document.getElementById("hidden-frame").innerHTML = "<iframe id='logout-frame' src='/admin/logout'></div>";
+            var logoutFrame = document.getElementById('logout-frame');
+            logoutFrame.onload = function() {
+                window.location.href = "/";
+            };
+        }
         </script>
     </body>
 </html>
