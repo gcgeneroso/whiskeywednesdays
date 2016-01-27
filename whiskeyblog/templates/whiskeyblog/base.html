@@ -61,6 +61,13 @@
                 {% block content %}
                 {% endblock %}
                 </div>
+                <div class="col-md-4 text-right">
+                    {% if user.is_authenticated %}
+                    <div id="github-link">
+                        <a href="https://github.com/gcgeneroso/whiskeywednesdays">Contribute on GitHub</a>
+                    </div>
+                    {% endif %}
+                </div>
             </div>
         </div>
         <div id="hidden-frame" style="display:none"></div>
