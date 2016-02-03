@@ -44,6 +44,7 @@ h1, h2, h3, h4 {
     color: #ffffff;
     float: right;
     font-size: 26pt;
+    margin-left: 20px;
     margin-top: 27px;
 }
 
@@ -52,14 +53,7 @@ h1, h2, h3, h4 {
     font-family: 'Lobster', cursive;
     color: #ffffff;
     font-size: 26pt;
-    margin-right: 20px;
     margin-top: 20px;
-}
-
-.log-in-or-out {
-    float: right;
-    margin-top: 30px;
-    margin-left: 20px;
 }
 
 .post {

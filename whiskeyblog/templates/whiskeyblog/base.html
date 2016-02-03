@@ -20,37 +20,11 @@
     <body>
         <div class="page-header">
             {% if user.is_authenticated %}
-                <button type="button" class="btn btn-default log-in-or-out" id="log-out" onclick="logOut()">
-                  Log Out
-                </button>
-                
+                <a href="{% url 'django.contrib.auth.views.logout' %}" class="top-menu"><span class="glyphicon glyphicon-log-out"></span></a>
                 <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
                 <span class="greetings">{{ user.get_username }}</span>
-            {% endif %}
-
-            {% if user.is_anonymous %}
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-default log-in-or-out" data-toggle="modal" data-target="#myModal">
-              Log In
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Members</h4>
-                  </div>
-                  <div class="modal-body">
-                    <iframe src="/admin/" style="zoom:0.60" frameborder="0" height="65%" width="99.6%"></iframe>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {% else %}
+                <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu"><span class="glyphicon glyphicon-user"></span></a>
             {% endif %}
             <h1><a href="/">Whiskey Wednesdays at </a><img src="/static/images/logo.png"></h1>
         </div>
@@ -70,22 +44,5 @@
                 </div>
             </div>
         </div>
-        <div id="hidden-frame" style="display:none"></div>
-        <script type="text/javascript">
-            $(function(){
-                $('#myModal').on('hidden.bs.modal', function () {
-                  document.location.reload();
-                });
-            });
-        </script>
-        <script>
-        function logOut() {
-            document.getElementById("hidden-frame").innerHTML = "<iframe id='logout-frame' src='/admin/logout'></div>";
-            var logoutFrame = document.getElementById('logout-frame');
-            logoutFrame.onload = function() {
-                window.location.href = "/";
-            };
-        }
-        </script>
     </body>
 </html>
