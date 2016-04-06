@@ -36,11 +36,12 @@
                 {% endblock %}
                 </div>
                 <div class="col-md-4 text-right">
-                    {% if user.is_authenticated %}
                     <div id="github-link">
                         <a href="https://github.com/gcgeneroso/whiskeywednesdays">Contribute on GitHub</a>
+                        {% if user.is_authenticated %}
+                        <span></span>
+                        {% endif %}
                     </div>
-                    {% endif %}
                 </div>
             </div>
         </div>
